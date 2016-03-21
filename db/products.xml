@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<products  xmlns="http://www.w3schools.com/RedsDevils"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://www.w3schools.com/RedsDevils neo_db.xsd">
+    <category title="Овощи" code="veg">
+        <product>Баклажаны</product>
+        <product>Брюква</product>
+        <product>Кабачки</product>
+        <product>Капуста белокочанная</product>
+        <product>Капуста квашеная</product>
+        <product>Капуста брюссельская</product>
+        <product>Капуста кольраби</product>
+        <product>Капуста краснокочанная</product>
+        <product>Капуста цветная</product>
+        <product>Картофель</product>
+        <product>Картофель молодой</product>
+        <product>Картофель сладкий (батат)</product>
+        <product>Лук зелёный</product>
+        <product>Лук-порей</product>
+        <product>Лук репчатый</product>
+        <product>Морковь</product>
+        <product>Огурцы</product>
+        <product>Огурцы солёные</product>
+        <product>Пастернак (корень)</product>
+        <product>Патиссоны</product>
+        <product>Перец зелёный сладкий</product>
+        <product>Перец красный сладкий</product>
+        <product>Петрушка</product>
+        <product>Петрушка (корень)</product>
+        <product>Ревень (черешки)</product>
+        <product>Редис</product>
+        <product>Редька</product>
+        <product>Репа</product>
+        <product>Салат</product>
+        <product>Свекла</product>
+        <product>Сельдерей</product>
+        <product>Сельдерей (корень)</product>
+        <product>Спаржа</product>
+        <product>Томаты</product>
+        <product>Укроп</product>
+        <product>Хрен</product>
+        <product>Черемша</product>
+        <product>Чеснок</product>
+        <product>Шпинат</product>
+        <product>Щавель</product>
+        <product>Бахчевые</product>
+        <product>Арбуз</product>
+        <product>Дыня</product>
+        <product>Тыква</product>
+    </category>
+    <category title="Фрукты" code="frut">
+        <product>Абрикосы</product>
+        <product>Айва</product>
+        <product>Алыча</product>
+        <product>Ананас</product>
+        <product>Бананы</product>
+        <product>Вишня</product>
+        <product>Гранат</product>
+        <product>Груша</product>
+        <product>Инжир</product>
+        <product>Кизил</product>
+        <product>Персики</product>
+        <product>Рябина</product>
+        <product>Черноплодная рябина</product>
+        <product>Слива</product>
+        <product>Хурма</product>
+        <product>Черешня</product>
+        <product>Шелковица</product>
+        <product>Яблоки</product>
+        <product>Яблоки зимние</product>
+        <product>Цитрусовые</product>
+        <product>Апельсин</product>
+        <product>Грейпфрут</product>
+        <product>Лимон</product>
+        <product>Мандарин</product>
+        <product>Ягоды</product>
+        <product>Брусника</product>
+        <product>Виноград</product>
+        <product>Голубика</product>
+        <product>Ежевика</product>
+        <product>Земляника</product>
+        <product>Клюква</product>
+        <product>Крыжовник</product>
+        <product>Малина</product>
+        <product>Морошка</product>
+        <product>Облепиха</product>
+        <product>Смородина белая</product>
+        <product>Смородина красная</product>
+        <product>Смородина чёрная</product>
+        <product>Черника</product>
+        <product>Шиповник свежий</product>
+    </category>
+    <category title="Фрукты сушенные" code="fruit_dr">
+        <product>Урюк</product>
+        <product>Курага</product>
+        <product>Изюм</product>
+        <product>Груша</product>
+        <product>Курага</product>
+        <product>Чернослив</product>
+        <product>Финики</product>
+        <product>Шиповник сухой</product>
+        <product>Яблоки</product>
+    </category>
+    <category title="Овощи сушенные" code="veg_dr">
+        <product>Зелёный горошек</product>
+        <product>Картофель</product>
+        <product>Картофельное пюре (хлопья)</product>
+        <product>Лук репчатый</product>
+        <product>Морковь</product>
+        <product>Свекла</product>
+        <product>Сельдерей (корень)</product>
+    </category>
+    <category title="Плодоовощные консервы" code="canned">
+        <product>Баклажаны в томатном соусе</product>
+        <product>Зелёный горошек</product>
+        <product>Фасоль стручковая</product>
+        <product>Икра из баклажан</product>
+        <product>Икра из кабачков</product>
+        <product>Кукуруза целыми зернами</product>
+        <product>Оливки консервированные</product>
+        <product>Томаты с кожицей</product>
+        <product>Томатная паста</product>
+        <product>Томат-пюре</product>
+        <product>Шпинат-пюре</product>
+        <product>Соус томатный острый</product>
+        <product>Томатный сок</product>
+        <product>Свекольный сок</product>
+        <product>Морковный сок</product>
+        <product>Абрикосовый сок</product>
+        <product>Айвовый сок</product>
+        <product>Апельсиновый сок</product>
+        <product>Виноградный сок</product>
+        <product>Вишневий сок</product>
+        <product>Гранатовый сок</product>
+        <product>Грейпфрутовый сок</product>
+        <product>Лимонный сок</product>
+        <product>Мандариновый сок</product>
+        <product>Персиковый сок</product>
+        <product>Сливовый сок</product>
+        <product>Черносмородиновый сок</product>
+        <product>Шиповниковый сок</product>
+        <product>Яблочный сок</product>
+        <product>Компот из абрикосов</product>
+        <product>Компот из яблок</product>
+        <product>Яблоки в сиропе</product>
+        <product>Варенье из клубники</product>
+        <product>Варенье из малины</product>
+        <product>Варенье из сливы</product>
+        <product>Варенье из яблок</product>
+        <product>Джем из абрикосов</product>
+        <product>Джем из чёрной смородины</product>
+        <product>Повидло яблочное</product>
+        <product>Пюре яблочное</product>
+        <product>Паста яблочная с сахаром</product>
+    </category>
+    <category title="Орехи и семечки" code="nuts">
+        <product>Арахис</product>
+        <product>Арахис сушеный</product>
+        <product>Грецкие орехи</product>
+        <product>Миндаль сладкий</product>
+        <product>Подсолнечник (семена)</product>
+        <product>Фундук</product>
+    </category>
+    <category title="Грибы" code="mushr">
+        <product>Белые свежие</product>
+        <product>Белые сушеные</product>
+        <product>Лисички свежие</product>
+        <product>Маслята свежие</product>
+        <product>Опята свежие</product>
+        <product>Подосиновики свежие</product>
+        <product>Подосиновики сушеные</product>
+        <product>Рыжики свежие</product>
+        <product>Шампиньоны свежие</product>
+    </category>
+    <category title="Бобовые" code="beans">
+        <product>Бобы зелёные</product>
+        <product>Горошек зелёный</product>
+        <product>Фасоль (стручок)</product>
+        <product>Горох сухой</product>
+        <product>Горох лущенный</product>
+        <product>Соя</product>
+        <product>Фасоль</product>
+        <product>Чечевица</product>
+    </category>
+    <category title="Зерновые" code="crops">
+        <product>Пшеница мягкая озимая</product>
+        <product>Пшеница твёрдая</product>
+        <product>Рожь</product>
+        <product>Гречиха</product>
+        <product>Кукуруза сахарная</product>
+        <product>Кукуруза</product>
+        <product>Овес</product>
+        <product>Просо</product>
+        <product>Рис</product>
+        <product>Ячмень</product>
+        <product>Крупы</product>
+        <product>Гречневая</product>
+        <product>Гречневая (продел)</product>
+        <product>Кукурузная</product>
+        <product>Овсяная</product>
+        <product>Геркулес</product>
+        <product>Толокно</product>
+        <product>Пшенная</product>
+        <product>Рисовая</product>
+        <product>Перловая</product>
+        <product>Ячменевая</product>
+        <product>Манная</product>
+        <product>Пшеничная "Полтавская"</product>
+    </category>
+    <category title="Изделия из муки" code="flour">
+        <product>Мука пшеничная, в/с</product>
+        <product>Мука пшеничная, сорт</product>
+        <product>Мука пшеничная, сорт</product>
+        <product>Мука пшеничная обойная</product>
+        <product>Мука ржаная сеяная</product>
+        <product>Мука ржаная обдирная</product>
+        <product>Мука ржаная обойная</product>
+        <product>Мука соевая</product>
+        <product>Мука соевая обезжиренная</product>
+        <product>Мука кукурузная</product>
+        <product>Мука ячменная</product>
+        <product>Макаронные изделия, в/с</product>
+        <product>Макароны молочные</product>
+        <product>Макароны яичные</product>
+        <product>Хлеб ржаной формовой</product>
+        <product>Хлеб ржано-пшеничный</product>
+        <product>Хлеб бородинский</product>
+        <product>Хлеб пеклеванный</product>
+        <product>Хлеб пшеничный зерновой</product>
+        <product>Хлеб пшеничный, сорт</product>
+        <product>Хлеб паляница</product>
+        <product>Чебурек</product>
+        <product>Лаваш</product>
+        <product>Батон нарезной сорт</product>
+        <product>Булка городская</product>
+        <product>Калач московский</product>
+        <product>Лепешка ржаная</product>
+        <product>Булочка сдобная</product>
+        <product>Сдоба выборгская с маком</product>
+        <product>Плюшка московская</product>
+        <product>Рожки обсыпные</product>
+        <product>Галеты из муки в/с</product>
+        <product>Крекеры из муки в/с</product>
+        <product>Печенье сахарное в/с</product>
+        <product>Печенье сдобное</product>
+        <product>Печенье миндальное</product>
+        <product>Пряники заварные</product>
+        <product>Баранки простые</product>
+        <product>Баранки сдобные</product>
+        <product>Бублики простые</product>
+        <product>Бублики с маком</product>
+        <product>Соломка сладкая</product>
+        <product>Сушки простые</product>
+        <product>Сушки горчичные</product>
+        <product>Сушки ванильные</product>
+        <product>Сухари армейские</product>
+        <product>Сухари дорожные</product>
+        <product>Сухари сливочные в/с</product>
+    </category>
+    <category title="Сырье" code="raw_mat">
+        <product>Агар пищевой</product>
+        <product>Агар из фурцеллярии</product>
+        <product>Дрожжи прессованные</product>
+        <product>Желатин пищевой</product>
+        <product>Отруби пшеничные</product>
+        <product>Какао-порошок</product>
+        <product>Какао тёртое</product>
+        <product>Крахмал картофельный</product>
+        <product>Крахмал кукурузный</product>
+        <product>Патока кукурузная</product>
+        <product>Пектин</product>
+        <product>Порошок горчичный</product>
+        <product>Мёд натуральный</product>
+        <product>Сахар-сырец</product>
+        <product>Сахар-песок</product>
+        <product>Сахар-рафинад</product>
+        <product>Соль поваренная</product>
+        <product>Уксус %-ный</product>
+    </category>
+    <category title="Кондитерские изделия" code="confect">
+        <product>Батончики на кондитерском жире</product>
+        <product>Драже ореховое</product>
+        <product>Драже фруктовое в шоколаде</product>
+        <product>Ирис полутвердый</product>
+        <product>Карамель леденцовая</product>
+        <product>Карамель фруктовая</product>
+        <product>Карамель с ликёром</product>
+        <product>Карамель шоколадно-ореховая</product>
+        <product>Конфеты молочные</product>
+        <product>Конфеты помадные</product>
+        <product>Конфеты грильяжные</product>
+        <product>Конфеты кремовые</product>
+        <product>Конфеты фруктовые</product>
+        <product>Конфеты шоколадные</product>
+        <product>Зефир</product>
+        <product>Мармелад фруктово-ягодный</product>
+        <product>Пастила</product>
+        <product>Халва подсолнечная</product>
+        <product>Халва тахинная</product>
+        <product>Шоколад без добавлений</product>
+        <product>Шоколад молочный</product>
+        <product>Шоколад с орехами</product>
+        <product>Вафли с фруктовой начинкой</product>
+        <product>Вафли с жирной начинкой</product>
+        <product>Пирожное крошковое</product>
+        <product>Пирожное миндальное</product>
+        <product>Пирожное фруктовое</product>
+        <product>Пирожное слоёное с кремом</product>
+        <product>Пирожное трубочка с кремом</product>
+        <product>Торт с фруктовой начинкой</product>
+        <product>Торт слоёный с кремом</product>
+    </category>
+    <category title="Молочные продукты" code="milk">
+        <product>Молоко козье (сырое)</product>
+        <product>Молоко коровье (сырое)</product>
+        <product>Молоко коровье (стерил)</product>
+        <product>Молоко коровье (паст)</product>
+        <product>Молоко обезжиренное</product>
+        <product>Молоко топленое</product>
+        <product>Молоко сгущеное (с сахаром)</product>
+        <product>Какао со сгущ молоком</product>
+        <product>Кофе со сгущ молоком</product>
+        <product>Молоко сгущеное (стерил)</product>
+        <product>Молоко сухое цельное</product>
+        <product>Сливки % жирности</product>
+        <product>Сливки % жирности</product>
+        <product>Сливки % жирности</product>
+        <product>Сливки взбитые плодовые</product>
+        <product>Сливки взбитые с шоколадом</product>
+        <product>Сливки сгущ с сахаром</product>
+        <product>Сливки сухие</product>
+        <product>Сливки сухие высокожирные</product>
+        <product>Сметана % жирности</product>
+        <product>Сметана % жирности</product>
+        <product>Сметана % жирности</product>
+        <product>Сметана % жирности</product>
+        <product>Творог нежирный</product>
+        <product>Творог полужирный</product>
+        <product>Творог жирный</product>
+        <product>Творог мягкий диетический</product>
+        <product>Творожная масса сладкая</product>
+        <product>Сырки масса творожная</product>
+        <product>Сырки творожные детские</product>
+        <product>Сырки глазированные</product>
+        <product>Паста ацидофильная сладкая</product>
+        <product>Паста ацидофильная нежирная</product>
+        <product>Ацидофилин</product>
+        <product>Йогурт</product>
+        <product>Йогурт сладкий</product>
+        <product>Кефир жирный</product>
+        <product>Кефир нежирный</product>
+        <product>Кумыс из кобыльего молока</product>
+        <product>Кумыс из коровьего молока</product>
+        <product>Пахта пастеризованная</product>
+        <product>Пахта сквашенная</product>
+        <product>Простокваша</product>
+        <product>Простокваша Мечниковская</product>
+        <product>Ряженка % жирности</product>
+        <product>Сыворотка творожная</product>
+        <product>Сыворотка подсырная</product>
+        <product>Брынза из коровьего молока</product>
+        <product>Брынза из овечьего молока</product>
+        <product>Сыр "Вырусский"</product>
+        <product>Сыр "Голландский"</product>
+        <product>Сыр "Пошехонский"</product>
+        <product>Сыр "Прибалтийский"</product>
+        <product>Сыр "Российский"</product>
+        <product>Сыр "Рокфор"</product>
+        <product>Сыр плавленый "Российский"</product>
+        <product>Сыр колбасный копчёный</product>
+        <product>Мороженое молочное</product>
+        <product>Мороженое сливочное</product>
+        <product>Пломбир</product>
+        <product>Эскимо</product>
+        <product>Молочное шоколадное</product>
+        <product>Сливочное шоколадное</product>
+        <product>Пломбир шоколадный</product>
+        <product>Молочное крем-брюле</product>
+        <product>Сливочное крем-брюле</product>
+        <product>Пломбир крем-брюле</product>
+        <product>Молочное ореховое</product>
+        <product>Сливочное ореховое</product>
+        <product>Пломбир ореховый</product>
+        <product>Молочное клубничное</product>
+        <product>Сливочное клубничное</product>
+    </category>
+    <category title="Мясные продукты" code="meat">
+        <product>Мясо кролика</product>
+        <product>Мясо поросят</product>
+        <product>Телятина категории</product>
+        <product>Баранина категории</product>
+        <product>Баранья грудинка</product>
+        <product>Баранья корейка</product>
+        <product>Баранья тазобедренная часть</product>
+        <product>Буйволятина категории</product>
+        <product>Верблюжатина категории</product>
+        <product>Говядина категории</product>
+        <product>Говяжья вырезка</product>
+        <product>Говяжья грудинка</product>
+        <product>Говяжья тазобедренная часть</product>
+        <product>Вымя говяжье</product>
+        <product>Печень говяжья</product>
+        <product>Почки говяжьи</product>
+        <product>Сердце говяжье</product>
+        <product>Язык говяжий</product>
+        <product>Оленина категории</product>
+        <product>Свинина мясная</product>
+        <product>Свинина жирная</product>
+        <product>Свинина вырезка</product>
+        <product>Свинина грудинка</product>
+        <product>Свинина корейка</product>
+        <product>Свиная тазобедренная часть</product>
+        <product>Свиные ножки</product>
+        <product>Печень свиная</product>
+        <product>Язык свиной</product>
+        <product>Шпик свиной (без шкурки)</product>
+        <product>Шпик свиной солёный</product>
+        <product>Мясо яка</product>
+        <product>Колбаса вареная диабетическая</product>
+        <product>Колбаса вареная докторская</product>
+        <product>Колбаса вареная телячья</product>
+        <product>Колбаса вареная чайная</product>
+        <product>Колбаса в/копчёная любительская</product>
+        <product>Колбаса п/копчёная краковская</product>
+        <product>Колбаса п/копчёная украинская</product>
+        <product>Охотничьи колбаски п/копчёные</product>
+        <product>Колбаса сырокопченая зернистая</product>
+        <product>Колбаса сырокопченая сервелат</product>
+        <product>Ветчина особая</product>
+        <product>Мясной хлеб ветчинный</product>
+        <product>Ветчина из свинины в форме</product>
+        <product>Грудинка свиная копчено-запеченная</product>
+        <product>Грудинка свиная сырокопченая</product>
+        <product>Корейка свиная сырокопченая</product>
+        <product>Окорок свиной вареный</product>
+        <product>Сардельки говяжьи</product>
+        <product>Сардельки свиные</product>
+        <product>Сосиски любительские</product>
+        <product>Сосиски молочные</product>
+        <product>Говядина в собственном соку</product>
+        <product>Говядина тушеная</product>
+        <product>Завтрак туриста (говядина)</product>
+        <product>Колбасный фарш отдельный</product>
+        <product>Свинина тушеная</product>
+        <product>Фарш свиной сосисочный</product>
+        <product>Паштет мясной</product>
+        <product>Паштет печёночный</product>
+        <product>Пельмени мясные</product>
+    </category>
+    <category title="Птица" code="bird">
+        <product>Гуси категории</product>
+        <product>Индейки категории</product>
+        <product>Куры категории</product>
+        <product>Перепёлки категории</product>
+        <product>Утки категории</product>
+        <product>Окорочек куриный</product>
+        <product>Филе куриное</product>
+        <product>Желудок куриный</product>
+        <product>Печень куриная</product>
+        <product>Сердце куриное</product>
+        <product>Яйцо куриное</product>
+        <product>Яйцо куриное (белок)</product>
+        <product>Яйцо куриное (желток)</product>
+        <product>Яйцо перепелиное</product>
+        <product>Яичный порошок</product>
+        <product>Колбаса вареная подмосковская</product>
+        <product>Курица в собственном соку</product>
+        <product>Фарш колбасный куриный</product>
+    </category>
+    <category title="Рыба и морепродукты" code="fish">
+        <product>Вобла свежая</product>
+        <product>Вобла холодного копчения</product>
+        <product>Вобла каспийская вяленая</product>
+        <product>Горбуша</product>
+        <product>Горбуша солёная</product>
+        <product>Карп</product>
+        <product>Килька балтийская</product>
+        <product>Килька балтийская солёная</product>
+        <product>Килька горячего копчения</product>
+        <product>Лещ</product>
+        <product>Лещ морской</product>
+        <product>Лещ каспийский солёный</product>
+        <product>Лещ каспийский вяленый</product>
+        <product>Лещ горячего копчения</product>
+        <product>Лещ холодного копчения</product>
+        <product>Минтай</product>
+        <product>Мойва весенняя</product>
+        <product>Мойва осенняя</product>
+        <product>Окунь речной</product>
+        <product>Окунь морской свежий</product>
+        <product>Окунь морской гор копчения</product>
+        <product>Окунь холодного копчения(балычок)</product>
+        <product>Осетр</product>
+        <product>Балык осетровый вяленый</product>
+        <product>Балык осетровый холодного копчения</product>
+        <product>Пикша</product>
+        <product>Сайра крупная</product>
+        <product>Сайра мелкая</product>
+        <product>Сельдь жирная свежая</product>
+        <product>Сельдь нежирная свежая</product>
+        <product>Сельдь атлантическая солёная</product>
+        <product>Скумбрия атлантическая</product>
+        <product>Снеток солено-сушеный</product>
+        <product>Ставрида океаническая</product>
+        <product>Ставрида хол копчения</product>
+        <product>Судак</product>
+        <product>Треска</product>
+        <product>Треска солёная</product>
+        <product>Треска горячего копчения</product>
+        <product>Тунец</product>
+        <product>Угорь</product>
+        <product>Щука</product>
+        <product>Кальмар (мясо)</product>
+        <product>Краб камчатский (мясо)</product>
+        <product>Креветка (мясо)</product>
+        <product>Моллюск рапана</product>
+        <product>Мидии</product>
+        <product>Мясо ластоногих</product>
+        <product>Морская капуста</product>
+        <product>Икра горбуши зернистая</product>
+        <product>Икра кеты зернистая (красная)</product>
+        <product>Икра минтаевая пробойная</product>
+        <product>Икра осетровая зернистая</product>
+        <product>Икра осетровая паюсная</product>
+        <product>Килька пряного посола</product>
+        <product>Консервы "Морская капуста"</product>
+        <product>Консервы натуральные "креветки"</product>
+        <product>Консервы натуральные "крабы"</product>
+        <product>Консервы "Печень трески"</product>
+        <product>Консервы натуральные "Горбуша"</product>
+        <product>Консервы натуральные "Скумбрия"</product>
+        <product>Консервы "Ставрида в масле"</product>
+        <product>Консервы "Треска в масле"</product>
+        <product>Консервы в масле "Шпроты"</product>
+        <product>Консервы "Горбуша в томате"</product>
+        <product>Консервы "Ставрида в томате"</product>
+        <product>Консервы "Судак в томате"</product>
+        <product>Паста"Океан"</product>
+    </category>
+    <category title="Масла и жиры" code="fats">
+        <product>Масло крестьянское несолёное</product>
+        <product>Масло крестьянское солёное</product>
+        <product>Масло сливочное несолёное</product>
+        <product>Масло бутербродное</product>
+        <product>Масло топленое</product>
+        <product>Масло кукурузное</product>
+        <product>Масло кунжутное</product>
+        <product>Масло оливковое</product>
+        <product>Масло подсолнечное</product>
+        <product>Масло соевое</product>
+        <product>Майонез "Провансаль"</product>
+        <product>Майонез столовый молочный</product>
+        <product>Маргарин столовый молочный</product>
+        <product>Маргарин "Экстра"</product>
+        <product>Жир кулинарный "Прима"</product>
+        <product>Жир кондитерский</product>
+        <product>Жир бараний топленый</product>
+        <product>Жир свиной топленый</product>
+        <product>Жир говяжий топленый</product>
+        <product>Жир тресковый</product>
+    </category>
+    <category title="Напитки" code="drinks">
+        <product>Лимонад цитрусовый</product>
+        <product>Лимонад плодовоягодный</product>
+        <product>Пиво жигулевское % об</product>
+        <product>Пиво "Портер" %об</product>
+        <product>Квас хлебный % об</product>
+        <product>Вино столовое белое % об</product>
+        <product>Вино столовое красное % об</product>
+        <product>Вино десертное белое % об</product>
+        <product>Шампанское полусухое %об</product>
+        <product>Водка %об</product>
+        <product>Коньяк " звёздочки" %об</product>
+        <product>Настойка "Старка" %об</product>
+        <product>Наливка "Сливянка" %об</product>
+        <product>Ликёр "Вишнёвый" %об</product>
+        <product>Пунш "Чёрносмородиновый"%об</product>
+        <product>Чай черный байховый</product>
+        <product>Кофе жареный в зернах</product>
+        <product>Кофе растворимый</product>
+    </category>
+</products>

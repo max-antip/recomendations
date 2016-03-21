@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<people>
+    <names>
+        <name gender="f">Алевтина</name>
+        <name gender="f">Александра</name>
+        <name gender="f">Алёна</name>
+        <name gender="f">Алина</name>
+        <name gender="f">Алиса</name>
+        <name gender="f">Алия</name>
+        <name gender="f">Алла</name>
+        <name gender="f">Алсу</name>
+        <name gender="f">Альбина</name>
+        <name gender="f">Анастасия</name>
+        <name gender="f">Ангелина</name>
+        <name gender="f">Анжелика</name>
+        <name gender="f">Анна</name>
+        <name gender="f">Антонина</name>
+        <name gender="f">Арина</name>
+        <name gender="f">Ася</name>
+        <name gender="f">Валентина</name>
+        <name gender="f">Валерия</name>
+        <name gender="f">Варвара</name>
+        <name gender="f">Василиса</name>
+        <name gender="f">Вера</name>
+        <name gender="f">Вероника</name>
+        <name gender="f">Виктория</name>
+        <name gender="f">Виолетта</name>
+        <name gender="f">Виталия</name>
+        <name gender="f">Владислава</name>
+        <name gender="f">Галина</name>
+        <name gender="f">Гузель</name>
+        <name gender="f">Гульнара</name>
+        <name gender="f">Дана</name>
+        <name gender="f">Дарья</name>
+        <name gender="f">Диана</name>
+        <name gender="f">Дина</name>
+        <name gender="f">Динара</name>
+        <name gender="f">Ева</name>
+        <name gender="f">Евгения</name>
+        <name gender="f">Екатерина</name>
+        <name gender="f">Елена</name>
+        <name gender="f">Елизавета</name>
+        <name gender="f">Жанна</name>
+        <name gender="f">Зарина</name>
+        <name gender="f">Земфира</name>
+        <name gender="f">Зинаида</name>
+        <name gender="f">Зоя</name>
+        <name gender="f">Иванна</name>
+        <name gender="f">Изабелла</name>
+        <name gender="f">Илона</name>
+        <name gender="f">Инга</name>
+        <name gender="f">Инесса</name>
+        <name gender="f">Инна</name>
+        <name gender="f">Ирина</name>
+        <name gender="f">Камилла</name>
+        <name gender="f">Кира</name>
+        <name gender="f">Карина</name>
+        <name gender="f">Каролина</name>
+        <name gender="f">Кристина</name>
+        <name gender="f">Ксения</name>
+        <name gender="f">Лариса</name>
+        <name gender="f">Леся</name>
+        <name gender="f">Лиана</name>
+        <name gender="f">Лидия</name>
+        <name gender="f">Лилия</name>
+        <name gender="f">Лина</name>
+        <name gender="f">Лолита</name>
+        <name gender="f">Любовь</name>
+        <name gender="f">Людмила</name>
+        <name gender="f">Мадина</name>
+        <name gender="f">Майя</name>
+        <name gender="f">Маргарита</name>
+        <name gender="f">Марина</name>
+        <name gender="f">Мария</name>
+        <name gender="f">Марта</name>
+        <name gender="f">Мила</name>
+        <name gender="f">Милана</name>
+        <name gender="f">Милена</name>
+        <name gender="f">Марианна</name>
+        <name gender="f">Мирослава</name>
+        <name gender="f">Марьяна</name>
+        <name gender="f">Надежда</name>
+        <name gender="f">Наталья</name>
+        <name gender="f">Нина</name>
+        <name gender="f">Нелли</name>
+        <name gender="f">Нонна</name>
+        <name gender="f">Оксана</name>
+        <name gender="f">Олеся</name>
+        <name gender="f">Ольга</name>
+        <name gender="f">Полина</name>
+        <name gender="f">Раиса</name>
+        <name gender="f">Регина</name>
+        <name gender="f">Римма</name>
+        <name gender="f">Роза</name>
+        <name gender="f">Руслана</name>
+        <name gender="f">Сабина</name>
+        <name gender="f">Светлана</name>
+        <name gender="f">Снежана</name>
+        <name gender="f">Софья</name>
+        <name gender="f">Таисия</name>
+        <name gender="f">Тамара</name>
+        <name gender="f">Татьяна</name>
+        <name gender="f">Ульяна</name>
+        <name gender="f">Элина</name>
+        <name gender="f">Эльвира</name>
+        <name gender="f">Юлия</name>
+        <name gender="f">Яна</name>
+        <name gender="m">Азамат</name>
+        <name gender="m">Азат</name>
+        <name gender="m">Александр</name>
+        <name gender="m">Алексей</name>
+        <name gender="m">Альберт</name>
+        <name gender="m">Анатолий</name>
+        <name gender="m">Андрей</name>
+        <name gender="m">Антон</name>
+        <name gender="m">Артём</name>
+        <name gender="m">Аркадий</name>
+        <name gender="m">Арсений</name>
+        <name gender="m">Артур</name>
+        <name gender="m">Богдан</name>
+        <name gender="m">Борис</name>
+        <name gender="m">Валерий</name>
+        <name gender="m">Валентин</name>
+        <name gender="m">Василий</name>
+        <name gender="m">Вадим</name>
+        <name gender="m">Владимир</name>
+        <name gender="m">Владислав</name>
+        <name gender="m">Виктор</name>
+        <name gender="m">Виталий</name>
+        <name gender="m">Вячеслав</name>
+        <name gender="m">Григорий</name>
+        <name gender="m">Глеб</name>
+        <name gender="m">Герман</name>
+        <name gender="m">Георгий</name>
+        <name gender="m">Геннадий</name>
+        <name gender="m">Давид</name>
+        <name gender="m">Даниил</name>
+        <name gender="m">Дмитрий</name>
+        <name gender="m">Денис</name>
+        <name gender="m">Евгений</name>
+        <name gender="m">Егор</name>
+        <name gender="m">Захар</name>
+        <name gender="m">Иван</name>
+        <name gender="m">Игорь</name>
+        <name gender="m">Ильдар</name>
+        <name gender="m">Илья</name>
+        <name gender="m">Кирилл</name>
+        <name gender="m">Константин</name>
+        <name gender="m">Леонид</name>
+        <name gender="m">Марат</name>
+        <name gender="m">Марк</name>
+        <name gender="m">Максим</name>
+        <name gender="m">Михаил</name>
+        <name gender="m">Назар</name>
+        <name gender="m">Никита</name>
+        <name gender="m">Николай</name>
+        <name gender="m">Олег</name>
+        <name gender="m">Павел</name>
+        <name gender="m">Пётр</name>
+        <name gender="m">Рашид</name>
+        <name gender="m">Ринат</name>
+        <name gender="m">Роберт</name>
+        <name gender="m">Роман</name>
+        <name gender="m">Руслан</name>
+        <name gender="m">Рустам</name>
+        <name gender="m">Святослав</name>
+        <name gender="m">Станислав</name>
+        <name gender="m">Степан</name>
+        <name gender="m">Сергей</name>
+        <name gender="m">Семён</name>
+        <name gender="m">Тарас</name>
+        <name gender="m">Тимофей</name>
+        <name gender="m">Филипп</name>
+        <name gender="m">Фёдор</name>
+        <name gender="m">Эрик</name>
+        <name gender="m">Эльдар</name>
+        <name gender="m">Эмиль</name>
+        <name gender="m">Эдуард</name>
+        <name gender="m">Юрий</name>
+        <name gender="m">Ярослав</name>
+        <name gender="m">Яков</name>
+    </names>
+    <surnames>
+        <surname>Иванов</surname>
+        <surname>Васильев</surname>
+        <surname>Петров</surname>
+        <surname>Смирнов</surname>
+        <surname>Михайлов</surname>
+        <surname>Фёдоров</surname>
+        <surname>Соколов</surname>
+        <surname>Яковлев</surname>
+        <surname>Попов</surname>
+        <surname>Андреев</surname>
+        <surname>Алексеев</surname>
+        <surname>Александров</surname>
+        <surname>Лебедев</surname>
+        <surname>Григорьев</surname>
+        <surname>Степанов</surname>
+        <surname>Семёнов</surname>
+        <surname>Павлов</surname>
+        <surname>Богданов</surname>
+        <surname>Николаев</surname>
+        <surname>Дмитриев</surname>
+        <surname>Егоров</surname>
+        <surname>Волков</surname>
+        <surname>Кузнецов</surname>
+        <surname>Никитин</surname>
+        <surname>Соловьёв</surname>
+        <surname>Тимофеев</surname>
+        <surname>Орлов</surname>
+        <surname>Афанасьев</surname>
+        <surname>Филиппов</surname>
+        <surname>Сергеев</surname>
+        <surname>Захаров</surname>
+        <surname>Матвеев</surname>
+        <surname>Виноградов</surname>
+        <surname>Кузьмин</surname>
+        <surname>Максимов</surname>
+        <surname>Козлов</surname>
+        <surname>Ильин</surname>
+        <surname>Герасимов</surname>
+        <surname>Марков</surname>
+        <surname>Новиков</surname>
+        <surname>Морозов</surname>
+        <surname>Романов</surname>
+        <surname>Осипов</surname>
+        <surname>Макаров</surname>
+        <surname>Зайцев</surname>
+        <surname>Беляев</surname>
+        <surname>Гаврилов</surname>
+        <surname>Антонов</surname>
+        <surname>Ефимов</surname>
+        <surname>Леонтьев</surname>
+        <surname>Давыдов</surname>
+        <surname>Гусев</surname>
+        <surname>Данилов</surname>
+        <surname>Киселёв</surname>
+        <surname>Сорокин</surname>
+        <surname>Тихомиров</surname>
+        <surname>Крылов</surname>
+        <surname>Никифоров</surname>
+        <surname>Кондратьев</surname>
+        <surname>Кудрявцев</surname>
+        <surname>Борисов</surname>
+        <surname>Жуков</surname>
+        <surname>Воробьёв</surname>
+        <surname>Щербаков</surname>
+        <surname>Поляков</surname>
+        <surname>Савельев</surname>
+        <surname>Шмидт</surname>
+        <surname>Трофимов</surname>
+        <surname>Чистяков</surname>
+        <surname>Баранов</surname>
+        <surname>Сидоров</surname>
+        <surname>Соболев</surname>
+        <surname>Карпов</surname>
+        <surname>Белов</surname>
+        <surname>Миллер</surname>
+        <surname>Титов</surname>
+        <surname>Львов</surname>
+        <surname>Фролов</surname>
+        <surname>Игнатьев</surname>
+        <surname>Комаров</surname>
+        <surname>Прокофьев</surname>
+        <surname>Быков</surname>
+        <surname>Абрамов</surname>
+        <surname>Голубев</surname>
+        <surname>Пономарёв</surname>
+        <surname>Покровский</surname>
+        <surname>Мартынов</surname>
+        <surname>Кириллов</surname>
+        <surname>Шульц</surname>
+        <surname>Миронов</surname>
+        <surname>Фомин</surname>
+        <surname>Власов</surname>
+        <surname>Троицкий</surname>
+        <surname>Федотов</surname>
+        <surname>Назаров</surname>
+        <surname>Ушаков</surname>
+        <surname>Денисов</surname>
+        <surname>Константинов</surname>
+        <surname>Воронин</surname>
+        <surname>Наумов</surname>
+    </surnames>
+
+</people>
