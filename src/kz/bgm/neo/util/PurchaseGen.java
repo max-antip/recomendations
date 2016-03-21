@@ -108,7 +108,6 @@ public class PurchaseGen {
 
         List<Purchase> prList = new ArrayList<>();
 
-
         if (personList.size() > 0 && productList.size() > 0) {
             int productsSize;
             int personsSize;
