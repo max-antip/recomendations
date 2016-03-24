@@ -2,7 +2,9 @@ package kz.bgm.neo.gui;
 
 
 import kz.bgm.neo.domain.Person;
+import kz.bgm.neo.domain.Product;
 import kz.bgm.neo.domain.Purchase;
+import kz.bgm.neo.reco.RecoProcessor;
 import kz.bgm.neo.service.DbService;
 import net.miginfocom.swing.MigLayout;
 
@@ -10,46 +12,113 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainWindow extends JFrame {
 
-//todo make orders line count in user label in value place.
-    public static final int WIDTH = 850;
-    public static final int HEIGHT = 600;
+    //todo make orders line count in user label in value place.
+    public static final int WIDTH = 1280;
+    public static final int HEIGHT = 750;
     public static final Font ARIAL = new Font("Arial", Font.PLAIN, 14);
-    public static final MigLayout LAYOUT_VERT_LIST = new MigLayout("wrap 1");
-    private List<KeyValLabel> userPurchase = new ArrayList<>();
+    public static final MigLayout LAYOUT_VERT_LIST = new MigLayout("", "[]", "[]10[]");
 
+    private List<KeyValLabel> userList = new ArrayList<>();
+    private ButtonGroup radioButGroup = new ButtonGroup();
+    private JButton recButt = new JButton("Recommendation");
     private JPanel userPanel;
     private JPanel basketPanel;
+    private JPanel recommendPanel;
+    private JPanel scorePanel;
     private JScrollPane userScroll;
+    private JScrollPane recommendScroll;
+    private JScrollPane scoreScroll;
     private JScrollPane basketScroll;
+    private JPanel buttonsPanel;
+    private JPanel mainInfoPanel;
+
     private KeyValLabel prodCategories = new KeyValLabel("Categories", "");
-    private DbService dbScanner;
+    private DbService dbService;
 
+    private JLabel usersLab = new JLabel("Users");
+    private JLabel basketLab = new JLabel("Basket");
+    private JLabel recommendLab = new JLabel("Recomendation");
+    private static final NumberFormat FORMATTER = new DecimalFormat("########0.00");
 
-    public MainWindow(DbService dbScanner) {
+    private String userSelected = "";
+
+    RecoProcessor recoProcessor;
+
+    public MainWindow(DbService dbService) {
         super("Neo4j-Reco");
-        this.dbScanner = dbScanner;
+        this.dbService = dbService;
         setSize(new Dimension(WIDTH, HEIGHT));
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocation(700, 300);
         setLayout(new MigLayout(
                 "",
-                "[]20[]",
-                "[top]"));
+                "[]20[]20[]",
+                "[top]20[top]"));
 
-        userPanel = new JPanel(LAYOUT_VERT_LIST);
+        mainInfoPanel = new JPanel(new MigLayout(
+                "insets 0",
+                "[grow]",
+                "[grow]20[grow]"));
+
+        userPanel = new JPanel(new MigLayout(
+                "",
+                "[]5[]",
+                "[center]"));
         userScroll = new JScrollPane(userPanel, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 //        userScroll.setLayout(new MigLayout("wrap 1"));
 
         basketPanel = new JPanel(LAYOUT_VERT_LIST);
         basketScroll = new JScrollPane(basketPanel, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
-        add(userScroll, "w 450, h 500,");
-        add(basketScroll, "w 450, h 500,");
+        recommendPanel = new JPanel(LAYOUT_VERT_LIST);
+        recommendScroll = new JScrollPane(recommendPanel, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+
+
+        scorePanel = new JPanel();
+        scorePanel.setLayout(new BoxLayout(scorePanel, BoxLayout.Y_AXIS));
+        scoreScroll = new JScrollPane(scorePanel, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+
+        buttonsPanel = new JPanel();
+        buttonsPanel.add(recButt);
+        recoProcessor = new RecoProcessor(dbService);
+        recButt.addActionListener(e -> {
+            RecoProcessor.RecommendationResult rc = recoProcessor.simpleCategoryRecommendation(userSelected);
+            recommendPanel.removeAll();
+            scorePanel.removeAll();
+            for (Product p : rc.getRecoProducts()) {
+                recommendPanel.add(new KeyValLabel(p.getName(), "(" + p.getCatCode() + ")", " "), "wrap");
+            }
+
+            for (String catss : rc.getScoreByCat().keySet()) {
+                double score = rc.getScoreByCat().get(catss);
+                String scoreStr = FORMATTER.format(score * 100);
+                scorePanel.add(new KeyValLabel(catss, scoreStr + "%"), "wrap");
+            }
+/*            recommendPanel.revalidate();
+            recommendPanel.repaint();
+            scorePanel.revalidate();
+            scorePanel.repaint();*/
+            mainInfoPanel.revalidate();
+            mainInfoPanel.repaint();
+        });
+
+
+        mainInfoPanel.add(recommendScroll, "h 250, growx,wrap");
+        mainInfoPanel.add(scoreScroll, "h 250, growx");
+        add(usersLab);
+        add(basketLab);
+        add(recommendLab, "wrap");
+        add(userScroll, "w 450, h 500");
+        add(basketScroll, "w 450, h 500");
+        add(mainInfoPanel, "w 450, h 500,span 2 ,wrap");
+        add(buttonsPanel, "w 450");
 
 
     }
@@ -57,36 +126,65 @@ public class MainWindow extends JFrame {
 
     public void addOrUpdatePurchase(Person person, String productName) {//todo add all persons with and without purchases
         boolean newUser = true;
-        for (KeyValLabel kv : userPurchase) {
+        for (KeyValLabel kv : userList) {
             if (kv.getKey().equals(person.getName())) {
-                kv.setVal(productName);
+                kv.setVal("");
                 newUser = false;
                 break;
             }
         }
         if (newUser) {
-            KeyValLabel userPurch = new KeyValLabel(person.getName(), productName);
 
-            userPurch.addMouseListener(new MouseAdapter() {
+            KeyValLabel userLabel = new KeyValLabel(person.getName(), productName);
+
+
+            userList.add(userLabel);
+            JRadioButton userButt = new JRadioButton();
+            userButt.addActionListener(e -> {
+                userSelected = person.getName();
+
+            });
+
+
+            userLabel.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mousePressed(MouseEvent e) {
-                    userPurch.setBackground(Color.LIGHT_GRAY);
-                    showPurchasesByUserName(userPurch.getKey());
+                    userButt.doClick();
+                    userLabel.setBackground(Color.LIGHT_GRAY);
+                    showPurchasesByUserName(userLabel.getKey());
                 }
 
                 @Override
                 public void mouseReleased(MouseEvent e) {
-                    userPurch.setBackground(Color.WHITE);
+                    userLabel.setBackground(Color.WHITE);
                 }
             });
-
-            userPurchase.add(userPurch);
-            userPanel.add(userPurch);
+            radioButGroup.add(userButt);
+            userPanel.add(userButt);
+            userPanel.add(userLabel, "wrap");
         }
         userPanel.repaint();
         userPanel.revalidate();
 
     }
+
+
+    public void showPurchasesByUserName(String name) {
+        if (dbService != null) {
+            List<Purchase> purchaseList = dbService.getPurchasesByUserName(name);
+            basketPanel.removeAll();
+
+            for (Purchase p : purchaseList) {
+                if (p.getProduct() != null) {
+                    basketPanel.add(new KeyValLabel(p.getProduct().getName(), "(" + p.getProduct().getCatCode() + ")", " "), "wrap");
+                }
+            }
+            basketPanel.repaint();
+            basketPanel.revalidate();
+        }
+
+    }
+
 
     private class KeyValLabel extends JLabel {
         private String key;
@@ -141,21 +239,6 @@ public class MainWindow extends JFrame {
 
     }
 
-    public void showPurchasesByUserName(String name) {
-        if (dbScanner != null) {
-            List<Purchase> purchaseList = dbScanner.getPurchasesByUserName(name);
-            basketPanel.removeAll();
-
-            for (Purchase p : purchaseList) {
-                if (p.getProduct() != null) {
-                    basketPanel.add(new KeyValLabel(p.getProduct().getName(), "(" + p.getProduct().getCatCode() + ")", " "));
-                }
-            }
-            basketPanel.repaint();
-            basketPanel.revalidate();
-        }
-
-    }
 
     public static void main(String[] args) throws InterruptedException {
         MainWindow mw = new MainWindow(null);

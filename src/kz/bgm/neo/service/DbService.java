@@ -10,6 +10,7 @@ import org.neo4j.graphdb.schema.IndexDefinition;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
@@ -118,7 +119,6 @@ public class DbService {
     public List<Node> getAllProducts() {
         List<Node> nodes = new ArrayList<>();
         try (Transaction tx = neoDB.beginTx()) {
-
             ResourceIterator<Node> prods = neoDB.findNodes(DynamicLabel.label(Product.NAME));
             while (prods.hasNext()) {
                 nodes.add(prods.next());
@@ -127,6 +127,7 @@ public class DbService {
         }
         return nodes;
     }
+
 
 
     public void printAllRelationships(Node node) {
@@ -158,6 +159,16 @@ public class DbService {
         }
     }
 
+    public List<Relationship> getRelationshipsByUserName(String userName) {
+        List<Relationship> relationshipList = new ArrayList<>();
+        Node personNode = neoDB.findNode(DynamicLabel.label(Person.NAME), Person.PROP_NAME, userName);
+        Iterable<Relationship> relationships = personNode.getRelationships();
+        for (Relationship r : relationships) {
+            relationshipList.add(r);
+        }
+        return relationshipList;
+    }
+
     public List<Purchase> getPurchasesByUserName(String userName) {
         List<Purchase> purchaseList = new ArrayList<>();
         try (Transaction tx = neoDB.beginTx()) {
@@ -186,6 +197,25 @@ public class DbService {
             tx.success();
         }
         return purchaseList;
+    }
+
+    public List<Product> getProductsByCat(String prodCat) {
+        List<Product> products = new ArrayList<>();
+        try (Transaction tx = neoDB.beginTx()) {
+            ResourceIterator<Node> prodNodes = neoDB.findNodes(DynamicLabel.label(Product.NAME), Product.PROP_CATEGORY_CODE, prodCat);
+
+            while (prodNodes.hasNext()) {
+                Node prodNode = prodNodes.next();
+                if (prodNode.hasProperty(Product.PROP_NAME) && prodNode.hasProperty(Product.PROP_CATEGORY_CODE)) {
+                    Product prod = Product.parse(prodNode);
+                    if (prod != null) {
+                        products.add(prod);
+                    }
+                }
+            }
+            tx.success();
+        }
+        return products;
     }
 
 
