@@ -44,7 +44,7 @@ public class DataGen {
                     surname = surnames.get(idxSurname);
 
                     String end = gender.equals(Person.Gender.F) ? "a" : "";
-                    Node userNode = neoDB.createNode(userLabel);
+                    Node userNode = neoDB.createNode(userLabel);//todo put in DBService
                     userNode.setProperty(Person.PROP_NAME, name + " " + surname + end);
                     userNode.setProperty(Person.PROP_AGE, randAge());
                     userNode.setProperty(Person.PROP_GENDER, gender.name());

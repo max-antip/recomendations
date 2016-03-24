@@ -3,18 +3,89 @@ package kz.bgm.neo.service;
 import kz.bgm.neo.domain.Person;
 import kz.bgm.neo.domain.Product;
 import kz.bgm.neo.domain.Purchase;
+import kz.bgm.neo.util.DataGen;
 import org.neo4j.graphdb.*;
+import org.neo4j.graphdb.factory.GraphDatabaseFactory;
 import org.neo4j.graphdb.schema.IndexDefinition;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 public class DbService {
 
-    private final GraphDatabaseService neoDB;
 
-    public DbService(GraphDatabaseService neoDB) {
-        this.neoDB = neoDB;
+    public static final String GEN_NEW_DB = "gen_db";
+    public static final String NO = "no";
+    public static final String YES = "yes";
+    public static final String Y = "y";
+    public static final String DB_PATH = "db_path";
+    public static final String DB_DEFAULT = "db/purchases";
+
+    private GraphDatabaseService neoDB;
+    private boolean dbInited;
+
+    public DbService(Properties props) {
+        String dbFilePath = props.getProperty(DB_PATH, DB_DEFAULT);
+        File dbFile = new File(dbFilePath);
+        String regenStr = props.getProperty(GEN_NEW_DB, NO);
+        if (regenStr.equalsIgnoreCase(YES) ||
+                regenStr.equalsIgnoreCase(Y)) {
+            deleteFolder(dbFile);
+            initNeoDB(dbFile);
+        }
+
+        if (!isDbInit()) {
+            initNeoDB(dbFile);
+        }
+
+    }
+
+    public List<Node> getProductByCategory(String catCode) {
+        List<Node> nodes = new ArrayList<>();
+        try (Transaction tx = neoDB.beginTx()) {
+            ResourceIterator<Node> prodNodes = neoDB.findNodes(DynamicLabel.label(Product.NAME), Product.PROP_CATEGORY_CODE, catCode);
+            while (prodNodes.hasNext()) {
+                nodes.add(prodNodes.next());
+            }
+
+            tx.success();
+        }
+        return nodes;
+    }
+
+    public GraphDatabaseService getDb() {
+        return neoDB;
+    }
+
+    public void initNeoDB(File dbFile) {
+        neoDB = new GraphDatabaseFactory().newEmbeddedDatabase(dbFile);
+        dbInited = true;
+    }
+
+    public void stopNeoDb() {
+        if (neoDB != null) {
+            neoDB.shutdown();
+        }
+    }
+
+    public boolean isDbInit() {
+        return dbInited;
+    }
+
+
+    private List<Node> findUsersNode(String property, String val) {
+        Label label = DynamicLabel.label(Person.NAME);
+        List<Node> nodes = new ArrayList<>();
+        try (Transaction tx = neoDB.beginTx()) {
+            ResourceIterator<Node> users = neoDB.findNodes(label, property, val);
+            while (users.hasNext()) {
+                nodes.add(users.next());
+            }
+            tx.success();
+        }
+        return nodes;
     }
 
     private void printDbIndex(String index) {
@@ -67,6 +138,14 @@ public class DbService {
         }
     }
 
+    public Node getPerson(String name) {
+        Node user;
+        try (Transaction tx = neoDB.beginTx()) {
+            user = neoDB.findNode(DynamicLabel.label(Person.NAME), Person.PROP_NAME, name);
+            tx.success();
+        }
+        return user;
+    }
 
     public void printAllNodes() {
         try (Transaction tx = neoDB.beginTx()) {
@@ -122,5 +201,19 @@ public class DbService {
             }
             tx.success();
         }
+    }
+
+    public static void deleteFolder(File folder) {
+        File[] files = folder.listFiles();
+        if (files != null) {
+            for (File f : files) {
+                if (f.isDirectory()) {
+                    deleteFolder(f);
+                } else {
+                    f.delete();
+                }
+            }
+        }
+        folder.delete();
     }
 }

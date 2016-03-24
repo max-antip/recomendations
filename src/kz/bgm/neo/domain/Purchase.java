@@ -6,6 +6,7 @@ import scala.io.StdIn;
 import java.time.LocalDate;
 
 public class Purchase {
+    public static final String PROP_CNT = "purchaseCnt";
 
     private Person customer;
     private String merchant;

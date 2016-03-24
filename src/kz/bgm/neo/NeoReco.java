@@ -21,58 +21,19 @@ import java.util.Properties;
 
 public class NeoReco {
     public static final String PROP_LOAD_XML_FILE = "load_xml_file";
-    public static final String DB_PATH = "db_path";
-    public static final String DB_DEFAULT = "db/purchases";
-    public static final String NO = "no";
-    public static final String YES = "yes";
-    public static final String Y = "y";
     public static final String GENERATE = "generate";
     public static final String GEN = "gen";
     public static final String PEOPEL_COUNT = "peopel_count";
     public static final String DEFAULT_PEOPEL_CNT = "100";
-    public static final String GEN_NEW_DB = "gen_db";
+    public static final String NO = "no";
+    public static final String YES = "yes";
+    public static final String Y = "y";
     public static final String WITH_GUI = "with_gui";
-    private static boolean dbInited;
-    private GraphDatabaseService neoDB;
-
-    public void stopNeoDb() {
-        if (neoDB != null) {
-            neoDB.shutdown();
-        }
-    }
-
-    public void initNeoDB(File dbFile) {
-        neoDB = new GraphDatabaseFactory().newEmbeddedDatabase(dbFile);
-        dbInited = true;
-    }
-
-    public boolean isDbInit() {
-        return dbInited;
-    }
-
-    private List<Node> findUsersNode(String property, String val) {
-        Label label = DynamicLabel.label(Person.NAME);
-        List<Node> nodes = new ArrayList<>();
-        try (Transaction tx = neoDB.beginTx()) {
-            ResourceIterator<Node> users = neoDB.findNodes(label, property, val);
-            while (users.hasNext()) {
-                nodes.add(users.next());
-            }
-            tx.success();
-        }
-        return nodes;
-    }
+    private DbService dbService;
 
 
-    private void addIndexTo(String nodeName, String property) {
-        try (Transaction tx = neoDB.beginTx()) {
-            Schema schema = neoDB.schema();
-            schema.indexFor(DynamicLabel.label(nodeName))
-                    .on(property)
-                    .create();
-            tx.success();
-        }
-    }
+
+
 
     //todo add Logger please
     public static void main(String[] args) throws IOException {
@@ -81,8 +42,7 @@ public class NeoReco {
             Properties props = new Properties();
             props.load(new FileInputStream(propsFile));
             DataXmlLoader xmlData = null;
-            String dbFilePath = props.getProperty(DB_PATH, DB_DEFAULT);
-            File dbFile = new File(dbFilePath);
+            DbService dbService = new DbService(props);
 
             String loadXml = props.getProperty(PROP_LOAD_XML_FILE, NO);
             if (loadXml.equalsIgnoreCase(YES) || loadXml.equalsIgnoreCase(Y)) {
@@ -92,32 +52,22 @@ public class NeoReco {
                     e.printStackTrace();
                 }
             }
-
-            NeoReco main = new NeoReco();
-
-            String regenStr = props.getProperty(GEN_NEW_DB, NO);
-            if (regenStr.equalsIgnoreCase(YES) ||
-                    regenStr.equalsIgnoreCase(Y)) {
-                deleteFolder(dbFile);
-                main.initNeoDB(dbFile);
-                String peopleCnt = props.getProperty(PEOPEL_COUNT, DEFAULT_PEOPEL_CNT);
-                DataGen dataGen = new DataGen();
-                if (xmlData != null) {
-                    dataGen.generateAndInsertUsers(main.neoDB, xmlData, Integer.parseInt(peopleCnt));
-                    dataGen.insertProducts(main.neoDB, xmlData);
-                } else {
-                    dataGen.generateAndInsertUsers(main.neoDB, Integer.parseInt(peopleCnt));
-                }
-            }
-
-            if (!main.isDbInit()) {
-                main.initNeoDB(dbFile);
+            String peopleCnt = props.getProperty(PEOPEL_COUNT, DEFAULT_PEOPEL_CNT);
+            DataGen dataGen = new DataGen();
+            if (xmlData != null) {
+                dataGen.generateAndInsertUsers(dbService.getDb(), xmlData, Integer.parseInt(peopleCnt));
+                dataGen.insertProducts(dbService.getDb(), xmlData);
+            } else {
+                dataGen.generateAndInsertUsers(dbService.getDb(), Integer.parseInt(peopleCnt));
             }
 
 
-            DbService scanner = new DbService(main.neoDB);
-            List<Node> products = scanner.getAllProducts();
-            scanner.printAllRelationships(products.get(0));
+
+
+
+
+            List<Node> products = dbService.getAllProducts();
+            dbService.printAllRelationships(products.get(0));
 /*
             List<Node> prods = scanner.getAllProducts();
             scanner.printProductNodes(prods);
@@ -134,14 +84,14 @@ public class NeoReco {
                 } catch (ClassNotFoundException | InstantiationException | UnsupportedLookAndFeelException | IllegalAccessException e) {
                     e.printStackTrace();
                 }
-                mw = new MainWindow(scanner);
+                mw = new MainWindow(dbService);
                 mw.setVisible(true);
             }
 
 
             PurchaseGen purchaseGen = new PurchaseGen();
 
-            purchaseGen.genNewPurchasesInDb(main.neoDB, mw, 50);
+            purchaseGen.genNewPurchasesInDb(dbService.getDb(), mw, 50);
 
 
         } else {
@@ -153,23 +103,6 @@ public class NeoReco {
     }
 
 
-    private List<Relationship> generatePurchases(int qty) {
-        return null;
-    }
-
-    public static void deleteFolder(File folder) {
-        File[] files = folder.listFiles();
-        if (files != null) {
-            for (File f : files) {
-                if (f.isDirectory()) {
-                    deleteFolder(f);
-                } else {
-                    f.delete();
-                }
-            }
-        }
-        folder.delete();
-    }
 
 
 }

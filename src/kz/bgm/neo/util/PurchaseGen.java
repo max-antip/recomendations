@@ -13,7 +13,6 @@ import java.util.Random;
 
 public class PurchaseGen {
     private static final Random random = new Random();
-    public static final String PURCHASE_CNT = "purchaseCnt";
 
     private List<Person> personList = new ArrayList<>();
     private List<Product> productList = new ArrayList<>();
@@ -82,13 +81,13 @@ public class PurchaseGen {
                         }
                     }
                     if (alreadyHasRelatioship) {
-                        if (oldRelationship.hasProperty(PURCHASE_CNT)) {
-                            int cntPurchases = (int) oldRelationship.getProperty(PURCHASE_CNT);
-                            oldRelationship.setProperty(PURCHASE_CNT, ++cntPurchases);
+                        if (oldRelationship.hasProperty(Purchase.PROP_CNT)) {
+                            int cntPurchases = (int) oldRelationship.getProperty(Purchase.PROP_CNT);
+                            oldRelationship.setProperty(Purchase.PROP_CNT, ++cntPurchases);
                         }
                     } else {
                         Relationship newRel = personNode.createRelationshipTo(product, RelTypes.PURCHASE);
-                        newRel.setProperty(PURCHASE_CNT, 1);
+                        newRel.setProperty(Purchase.PROP_CNT, 1);
                     }
                     purchase.setCustomer(Person.parse(personNode));
                     prList.add(purchase);
