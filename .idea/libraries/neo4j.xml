@@ -1,10 +1,6 @@
 <component name="libraryTable">
-  <library name="neo4j-all">
+  <library name="neo4j">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/commons-lang3-3.3.2.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/concurrentlinkedhashmap-lru-1.4.2.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/jline-2.12.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/lucene-core-3.6.2.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/neo4j-codegen-2.3.2.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/neo4j-consistency-check-2.3.2.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/neo4j-consistency-check-legacy-2.3.2.jar!/" />
@@ -34,6 +30,11 @@
       <root url="jar://$PROJECT_DIR$/lib/scala-parser-combinators_2.11-1.0.4.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/scala-reflect-2.11.7.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/server-api-2.3.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lucene-core-3.6.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jline-2.12.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/graphaware-reco-2.3.2.37.10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/concurrentlinkedhashmap-lru-1.4.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-lang3-3.3.2.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

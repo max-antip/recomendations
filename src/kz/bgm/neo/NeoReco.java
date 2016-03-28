@@ -1,21 +1,16 @@
 package kz.bgm.neo;
 
-import kz.bgm.neo.domain.Person;
-import kz.bgm.neo.gui.MainWindow;
+import kz.bgm.neo.gui.RecomendWindow;
 import kz.bgm.neo.util.DataGen;
 import kz.bgm.neo.util.DataXmlLoader;
 import kz.bgm.neo.service.DbService;
 import kz.bgm.neo.util.PurchaseGen;
 import org.jdom2.JDOMException;
 import org.neo4j.graphdb.*;
-import org.neo4j.graphdb.factory.GraphDatabaseFactory;
-import org.neo4j.graphdb.schema.Schema;
 
 import javax.swing.*;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -74,7 +69,7 @@ public class NeoReco {
 */
 
             String withGui = props.getProperty(WITH_GUI, NO);
-            MainWindow mw = null;
+            RecomendWindow mw = null;
 
             if (withGui.equalsIgnoreCase(YES) ||
                     withGui.equalsIgnoreCase(Y)) {
@@ -84,14 +79,14 @@ public class NeoReco {
                 } catch (ClassNotFoundException | InstantiationException | UnsupportedLookAndFeelException | IllegalAccessException e) {
                     e.printStackTrace();
                 }
-                mw = new MainWindow(dbService);
+                mw = new RecomendWindow(dbService);
                 mw.setVisible(true);
             }
 
 
             PurchaseGen purchaseGen = new PurchaseGen();
 
-            purchaseGen.genNewPurchasesInDb(dbService.getDb(), mw, 50);
+            purchaseGen.genNewPurchasesInNeoDb(dbService.getDb(), mw, 50);
 
 
         } else {

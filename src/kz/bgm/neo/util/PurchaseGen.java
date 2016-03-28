@@ -4,7 +4,7 @@ import kz.bgm.neo.domain.Person;
 import kz.bgm.neo.domain.Product;
 import kz.bgm.neo.domain.Purchase;
 import kz.bgm.neo.domain.RelTypes;
-import kz.bgm.neo.gui.MainWindow;
+import kz.bgm.neo.gui.RecomendWindow;
 import org.neo4j.graphdb.*;
 
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ public class PurchaseGen {
         productList = products;
     }
 
-    public List<Purchase> genNewPurchasesInDb(GraphDatabaseService neoDB, MainWindow mainWindow, int cnt) {
+    public List<Purchase> genNewPurchasesInNeoDb(GraphDatabaseService neoDB, RecomendWindow recomendWindow, int cnt) {
         List<Purchase> prList = new ArrayList<>();
         try (Transaction tx = neoDB.beginTx()) {
 
@@ -91,8 +91,8 @@ public class PurchaseGen {
                     }
                     purchase.setCustomer(Person.parse(personNode));
                     prList.add(purchase);
-                    if (mainWindow != null) {
-                        mainWindow.addOrUpdatePurchase(purchase.getCustomer(), purchase.getProduct().getName());
+                    if (recomendWindow != null) {
+                        recomendWindow.addOrUpdatePurchase(purchase.getCustomer(), purchase.getProduct().getName());
                     }
                     cnt--;
                 }
@@ -103,7 +103,7 @@ public class PurchaseGen {
         return prList;
     }
 
-    public List<Purchase> genNewPurchases(MainWindow mainWindow, int cnt) {
+    public List<Purchase> genNewPurchases(RecomendWindow recomendWindow, int cnt) {
 
         List<Purchase> prList = new ArrayList<>();
 
@@ -122,8 +122,8 @@ public class PurchaseGen {
                 purchase.setProduct(product);
                 purchase.setCustomer(person);
                 prList.add(purchase);
-                if (mainWindow != null) {
-                    mainWindow.addOrUpdatePurchase(purchase.getCustomer(), purchase.getProduct().getName());
+                if (recomendWindow != null) {
+                    recomendWindow.addOrUpdatePurchase(purchase.getCustomer(), purchase.getProduct().getName());
                 }
                 cnt--;
             }

@@ -21,7 +21,7 @@ public class DbService {
     public static final String NO = "no";
     public static final String YES = "yes";
     public static final String Y = "y";
-    public static final String DB_PATH = "db_path";
+    public static final String DB_PATH = "neo_db_path";
     public static final String DB_DEFAULT = "db/purchases";
 
     private GraphDatabaseService neoDB;
