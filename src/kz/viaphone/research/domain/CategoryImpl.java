@@ -1,4 +1,4 @@
-package kz.bgm.neo.domain;
+package kz.viaphone.research.domain;
 
 
 public class CategoryImpl implements Category {

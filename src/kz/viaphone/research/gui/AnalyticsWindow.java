@@ -1,9 +1,12 @@
-package kz.bgm.neo.gui;
+package kz.viaphone.research.gui;
 
+import kz.viaphone.research.domain.Purchase;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.*;
+import java.util.List;
 
 public class AnalyticsWindow extends JFrame {
 
@@ -26,6 +29,9 @@ public class AnalyticsWindow extends JFrame {
 
     JPanel loyaltyPanel;
     JPanel searchPanel;
+
+
+    private List<Purchase> purchaseList;
 
     public AnalyticsWindow() throws HeadlessException {
         super("Analytics");
@@ -83,6 +89,13 @@ public class AnalyticsWindow extends JFrame {
 
         add(searchPanel);
         add(loyaltyPanel);
+    }
+
+    public void setPurchases(List<Purchase> purchases) {
+        purchaseList = purchases;
+
+
+
     }
 
 

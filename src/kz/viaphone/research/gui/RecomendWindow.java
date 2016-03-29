@@ -1,11 +1,10 @@
-package kz.bgm.neo.gui;
+package kz.viaphone.research.gui;
 
 
-import kz.bgm.neo.domain.Person;
-import kz.bgm.neo.domain.Product;
-import kz.bgm.neo.domain.Purchase;
-import kz.bgm.neo.reco.RecoProcessor;
-import kz.bgm.neo.service.DbService;
+import kz.viaphone.research.domain.Person;
+import kz.viaphone.research.domain.Product;
+import kz.viaphone.research.reco.RecoProcessor;
+import kz.viaphone.research.service.NeoDbService;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
@@ -40,7 +39,7 @@ public class RecomendWindow extends JFrame {
     private JPanel mainInfoPanel;
 
     private KeyValLabel prodCategories = new KeyValLabel("Categories", "");
-    private DbService dbService;
+    private NeoDbService dbService;
 
     private JLabel usersLab = new JLabel("Users");
     private JLabel basketLab = new JLabel("Basket");
@@ -51,7 +50,7 @@ public class RecomendWindow extends JFrame {
 
     RecoProcessor recoProcessor;
 
-    public RecomendWindow(DbService dbService) {
+    public RecomendWindow(NeoDbService dbService) {
         super("Neo4j-Reco");
         this.dbService = dbService;
         setSize(new Dimension(WIDTH, HEIGHT));
@@ -93,7 +92,7 @@ public class RecomendWindow extends JFrame {
             recommendPanel.removeAll();
             scorePanel.removeAll();
             for (Product p : rc.getRecoProducts()) {
-                recommendPanel.add(new KeyValLabel(p.getName(), "(" + p.getCatCode() + ")", " "), "wrap");
+                recommendPanel.add(new KeyValLabel(p.getName(), "(" + p.getCategory() + ")", " "), "wrap");
             }
 
             for (String catss : rc.getScoreByCat().keySet()) {
@@ -151,7 +150,7 @@ public class RecomendWindow extends JFrame {
                 public void mousePressed(MouseEvent e) {
                     userButt.doClick();
                     userLabel.setBackground(Color.LIGHT_GRAY);
-                    showPurchasesByUserName(userLabel.getKey());
+                    /*showPurchasesByUserName(userLabel.getKey());*/
                 }
 
                 @Override
@@ -169,7 +168,7 @@ public class RecomendWindow extends JFrame {
     }
 
 
-    public void showPurchasesByUserName(String name) {
+/*    public void showPurchasesByUserName(String name) {
         if (dbService != null) {
             List<Purchase> purchaseList = dbService.getPurchasesByUserName(name);
             basketPanel.removeAll();
@@ -183,7 +182,7 @@ public class RecomendWindow extends JFrame {
             basketPanel.revalidate();
         }
 
-    }
+    }*/
 
 
     private class KeyValLabel extends JLabel {
