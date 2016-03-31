@@ -65,6 +65,7 @@ public class Analytics {
     }
 
 
+
     public List<RFMResult> computeRFM(String productName, List<Purchase> totalPurchases) {
         List<RFMResult> results = new ArrayList<>();
         for (long customId : customerPurchases.keySet()) {
