@@ -50,12 +50,20 @@ public class Purchase {
         return products;
     }
 
+
     public void setProducts(List<Product> products) {
         this.products = products;
         for (Product p : products) {
             amount += p.getQty() * p.getPrice();
         }
 
+    }
+
+    public Product getProduct(String name) {
+        for (Product p : products) {
+            if (p.getName().contains(name)) return p;
+        }
+        return null;
     }
 
     public void addProduct(Product product) {

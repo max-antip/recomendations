@@ -39,6 +39,10 @@ public class Product {
         return qty;
     }
 
+    public double getCashVol() {
+        return qty * price;
+    }
+
     public void setQty(int qty) {
         this.qty = qty;
     }
