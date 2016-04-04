@@ -1,10 +1,16 @@
 package kz.viaphone.research.gui;
 
+import kz.viaphone.research.anal.Analytics;
+import kz.viaphone.research.domain.Person;
 import kz.viaphone.research.domain.Purchase;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.*;
 import java.util.List;
 
@@ -14,27 +20,37 @@ public class AnalyticsWindow extends JFrame {
     public static final int HEIGHT = 350;
     public static final int WIDTH = 500;
     public static final String SHOW = "show";
-    JTextField searchField;
-    JLabel searchLbl;
-    JLabel loyalCustLbl;
-    JLabel loyalCustField;
-    JButton loyalCustBut;
-    JLabel oneTimeCustLbl;
-    JLabel oneTimeCustField;
-    JButton oneTimeCustBut;
-    JLabel newCustLbl;
-    JLabel newCustField;
-    JButton newCustBut;
+    private JTextField searchField;
+    private JLabel searchLbl;
+    private JButton searchBtn;
+
+    private static final NumberFormat formatter = new DecimalFormat("########0.00");
 
 
-    JPanel loyaltyPanel;
-    JPanel searchPanel;
+    private JButton showNewBut;
+
+    private JPanel mainReportPanel;
+    private List<JPanel> reportPanels;
+    private JPanel searchPanel;
+    private Analytics analytics;
+    private List<Analytics.RFMResult> RFMResults;
 
 
+    private JLabel productLbl;
+    private JLabel prodName;
+    private JLabel mostLoyalCustomersLbl;
+    private JLabel mostLoyalCustomersField;
+    private JLabel rfmLbl;
+    private JLabel femaleLbl;
+    private JLabel femaleField;
+    private JLabel maleLbl;
+    private JLabel maleField;
     private List<Purchase> purchaseList;
 
-    public AnalyticsWindow() throws HeadlessException {
+
+    public AnalyticsWindow(List<Purchase> purchaseList) throws HeadlessException {
         super("Analytics");
+        this.purchaseList = purchaseList;
         setSize(new Dimension(WIDTH, HEIGHT));
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLayout(new MigLayout(
@@ -47,54 +63,57 @@ public class AnalyticsWindow extends JFrame {
                 "[center]5[center]",
                 "[center]"));
 
-
-        loyaltyPanel = new JPanel(new MigLayout("",
-                "[right]5[center]5[right]",
-                "[center]10[center]10[center]"));
-
-        searchLbl = new JLabel("Search");
-        searchLbl.setFont(ARIAL);
         searchField = new JTextField();
-        searchPanel.add(searchLbl);
+        searchBtn = new JButton("Search");
+
+        searchBtn.setFont(ARIAL);
+        searchPanel.add(searchBtn);
         searchPanel.add(searchField, "w 150");
 
+        mainReportPanel = new JPanel(new MigLayout("", "[]5[]5[]", "[]10[]"));
 
-        loyalCustLbl = new JLabel("Loyal customers");
-        loyalCustLbl.setFont(ARIAL);
-        loyalCustLbl.setForeground(Color.GREEN);
-        loyalCustField = new JLabel();
-        loyalCustBut = new JButton(SHOW);
-        oneTimeCustLbl = new JLabel("One time customers");
-        oneTimeCustLbl.setFont(ARIAL);
+        add(searchPanel, "wrap");
+        add(mainReportPanel);
 
-        oneTimeCustLbl.setForeground(Color.ORANGE);
-        oneTimeCustField = new JLabel();
-        oneTimeCustBut = new JButton(SHOW);
-        newCustLbl = new JLabel("New customers");
-        newCustLbl.setFont(ARIAL);
-        newCustLbl.setForeground(Color.RED);
-        newCustField = new JLabel();
-        newCustBut = new JButton(SHOW);
-
-        loyaltyPanel.add(loyalCustLbl);
-        loyaltyPanel.add(loyalCustField);
-        loyaltyPanel.add(loyalCustBut, "wrap");
-        loyaltyPanel.add(oneTimeCustLbl);
-        loyaltyPanel.add(oneTimeCustField);
-        loyaltyPanel.add(oneTimeCustBut, "wrap");
-        loyaltyPanel.add(newCustLbl);
-        loyaltyPanel.add(newCustField);
-        loyaltyPanel.add(newCustBut, "wrap");
+        analytics = new Analytics(purchaseList);
 
 
-        add(searchPanel);
-        add(loyaltyPanel);
+        searchBtn.addActionListener(e -> {
+            mainReportPanel.removeAll();
+            RFMResults = analytics.computeRFM(searchField.getText());
+            productLbl = new ViaLabel("Product:");
+//            mostLoyalCustomersLbl = new ViaLabel("Most Loyal customers:");
+            GenderAnalyse ga = new GenderAnalyse(RFMResults);
+            femaleLbl = new ViaLabel("Female:");
+            femaleField = new ViaLabel(formatter.format(ga.getF()) + " %");
+            mainReportPanel.add(femaleLbl);
+            mainReportPanel.add(femaleField, "wrap");
+
+            maleLbl = new ViaLabel("Male:");
+            maleField = new ViaLabel(formatter.format(ga.getM()) + " %");
+            mainReportPanel.add(maleLbl);
+            mainReportPanel.add(maleField, "wrap");
+            mainReportPanel.add(productLbl);
+            prodName = new ViaLabel(searchField.getText());
+            mainReportPanel.add(prodName, "wrap");
+            rfmLbl = new ViaLabel("RFM analyse");
+            mainReportPanel.add(rfmLbl);
+            JButton showResultBut = new JButton("Show");
+            showResultBut.setFont(ARIAL);
+            mainReportPanel.add(showResultBut, "wrap");
+
+            UsersAnalyticsTable at = new UsersAnalyticsTable(RFMResults, searchField.getText());
+            showResultBut.addActionListener(e1 -> at.setVisible(true));
+
+            revalidate();
+            repaint();
+        });
+
     }
+
 
     public void setPurchases(List<Purchase> purchases) {
         purchaseList = purchases;
-
-
 
     }
 
@@ -107,9 +126,50 @@ public class AnalyticsWindow extends JFrame {
             e.printStackTrace();
         }
 
-        AnalyticsWindow anal = new AnalyticsWindow();
+        AnalyticsWindow anal = new AnalyticsWindow(new ArrayList<>());
         anal.setVisible(true);
     }
 
+
+    private class GenderAnalyse {
+        private double m;
+        private double f;
+
+        public GenderAnalyse(List<Analytics.RFMResult> results) {
+            int fCnt = 0;
+            int mCnt = 0;
+            int totalCnt = 0;
+            for (Analytics.RFMResult res : results) {
+                if (!res.isEmpty()) {
+                    totalCnt++;
+                    if (res.getPerson().getGender() == Person.Gender.M) {
+                        mCnt++;
+                    } else {
+                        fCnt++;
+                    }
+                }
+            }
+
+            if (mCnt == 0) {
+                m = 0;
+            } else {
+                m = (double)(mCnt * 100) / totalCnt;
+            }
+            if (fCnt == 0) {
+                f = 0;
+            } else {
+                f = (double)(fCnt * 100) / totalCnt;
+            }
+
+        }
+
+        public double getF() {
+            return f;
+        }
+
+        public double getM() {
+            return m;
+        }
+    }
 
 }

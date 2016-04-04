@@ -91,14 +91,19 @@ public class ViaphoneResearch {
                     dbService = new DbService(props);
 
                     List<Purchase> purchases = dbService.getPurchases(new Date(), new Date());
-                    Analytics analytics = new Analytics(purchases);
 
-                    System.out.println("Test");
+
 
                     if (withGui.equalsIgnoreCase(YES) ||
                             withGui.equalsIgnoreCase(Y)) {
-                        AnalyticsWindow anal = new AnalyticsWindow();
-
+                        try {
+                            UIManager.setLookAndFeel(
+                                    UIManager.getSystemLookAndFeelClassName());
+                        } catch (ClassNotFoundException | InstantiationException | UnsupportedLookAndFeelException | IllegalAccessException e) {
+                            e.printStackTrace();
+                        }
+                        AnalyticsWindow anal = new AnalyticsWindow(purchases);
+                        anal.setVisible(true);
                     }
 
                 }

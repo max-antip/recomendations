@@ -5,10 +5,7 @@ import kz.viaphone.research.domain.Person;
 import kz.viaphone.research.domain.Product;
 import kz.viaphone.research.domain.Purchase;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Analytics {
 
@@ -28,7 +25,6 @@ public class Analytics {
 
         );
 
-        computeRFM("Apple", purchaseList);
     }
 
     private void fillPurchasesByCustomer(Purchase pu, long customerId) {
@@ -65,8 +61,7 @@ public class Analytics {
     }
 
 
-
-    public List<RFMResult> computeRFM(String productName, List<Purchase> totalPurchases) {
+    public List<RFMResult> computeRFM(String productName) {
         List<RFMResult> results = new ArrayList<>();
         for (long customId : customerPurchases.keySet()) {
             List<Purchase> purchases = customerPurchases.get(customId);
@@ -76,6 +71,8 @@ public class Analytics {
             RFMResult rfmResult = new RFMResult(getCustomer(customId), r, m);
             results.add(rfmResult);
         }
+
+        Collections.sort(results, (o1, o2) -> -1 * Double.compare(o1.m, o2.m));
 
         return results;
 
@@ -88,27 +85,47 @@ public class Analytics {
         return null;
     }
 
-    public class RFMResult {
+
+    public class RFMResult implements Comparable {
         final Person person;
         final int r;
+        final int f;
         final double m;
 
         public RFMResult(Person person, int r, double m) {
             this.person = person;
             this.r = r;
             this.m = m;
+            this.f = 0;
         }
 
         public Person getPerson() {
             return person;
         }
 
+        public boolean isEmpty() {
+            return r == 0 && m == 0 && f == 0;
+        }
+
         public int getR() {
             return r;
         }
 
+        public int getF() {
+            return f;
+        }
+
         public double getM() {
             return m;
+        }
+
+        @Override
+        public int compareTo(Object o) {
+            if (o instanceof RFMResult) {
+                RFMResult anotherRes = (RFMResult) o;
+                return Double.compare(m, anotherRes.getM());
+            }
+            return 0;
         }
     }
 
